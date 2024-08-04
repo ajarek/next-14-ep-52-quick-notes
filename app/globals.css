@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -68,4 +70,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  .btn-filter{
+    @apply text-primary text-lg  focus:bg-primary focus:text-white;
+  }
 }
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color:  hsl(24.6 95% 53.1%) hsl(60 4.8% 95.9%);
+}
+
+
+
