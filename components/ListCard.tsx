@@ -12,20 +12,25 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import {Ellipsis, Trash2, FilePenLine} from 'lucide-react'
+import notes from '@/data/notes.json'
 import { Button } from './ui/button'
-
+const options:any = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 const ListCard = () => {
-  const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  
   return (
     <div className='w-full grid grid-cols-3 gap-4 max-h-96 overflow-y-auto scrollbar'>
-      {array.map((item, index) => (
+      {notes.map((item, index) => (
         <Card
           key={index}
           className=''
         >
           <CardHeader>
             <CardDescription className='flex justify-between'>
-              <span>April 3, 2024</span>
+              <span>{(new Date(item.createdAt)).toLocaleString('en-US',options)}</span>
               <Popover >
                 <PopoverTrigger><Ellipsis /></PopoverTrigger>
                 <PopoverContent className='flex justify-center  gap-2 w-36'>
@@ -34,18 +39,19 @@ const ListCard = () => {
                 </PopoverContent>
               </Popover>
             </CardDescription>
-            <CardTitle>Spaghetti Bolognese</CardTitle>
+            <CardTitle>{item.title}</CardTitle>
           </CardHeader>
           <CardContent>
             <p>
-              Pasta Bolognese is a classic Italian dish where al dente pasta
-              meets a hearty ground beef sauce slow-cooked with onions, garlic,
-              and tomatoes.
+             {(item.content).slice(0,80)}...
             </p>
           </CardContent>
           <CardFooter className='flex gap-2'>
-            <Button>Recipe</Button>
-            <Button>Cooking</Button>
+            {item.category.map((item, index) => (
+              
+            <Button key={index} className='hover:bg-primary cursor-default'>{item}</Button>
+            ))}
+            
           </CardFooter>
         </Card>
       ))}

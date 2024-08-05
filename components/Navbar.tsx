@@ -18,7 +18,7 @@ const Navbar = () => {
             <h1 className="text-2xl"><span className="font-bold">Quick</span> Notes</h1>
 
       </Link>
-      <Button variant="outline" className="text-primary text-lg ">Add a note</Button>
+      <Link href='/add-note'  className="text-primary text-lg border border-primary py-1 px-4 rounded-sm hover:bg-primary hover:text-white ">Add a note</Link>
         
     </div>
   )
