@@ -3,7 +3,9 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { useRef, useState } from 'react'
 import { Textarea } from '@/components/ui/textarea'
-import { createNote } from '@/lib/action'
+import { newNoteStore } from '@/store/notesStore'
+import { revalidatePath } from 'next/cache'
+import type { Note } from '@/store/notesStore'
 import { Label } from '@/components/ui/label'
 import {
   Select,
@@ -16,23 +18,48 @@ import Link from 'next/link'
 
 const FormNote = () => {
   const ref = useRef<HTMLFormElement>(null)
+  const { addNote } = newNoteStore()
   return (
     <div className='  w-full  gap-8 items-center justify-center p-4 '>
       <div className=' flex flex-col  gap-4'>
         <div className='flex justify-between items-center'>
-        <h1 className='text-2xl font-bold'>Add a note</h1>
+          <h1 className='text-2xl font-bold'>Add a note</h1>
           <Link href='/'>❌</Link>
         </div>
 
         <form
           ref={ref}
           className='w-full  flex flex-col gap-4 p-6 '
-          action={async (formData) => {
-            await createNote(formData)
+          onSubmit={(e) => {
+            e.preventDefault()
+            const formData = new FormData(e.target as HTMLFormElement)
+            
+            try {
+              const title = formData.get('title')?.toString()
+              const content = formData.get('content')?.toString()
+              const category = formData.get('category')?.toString()
+
+              const note: Note = {
+                id: Date.now(),
+                title: title ?? '',
+                content: content ?? '',
+                category: category ?? '',
+                createdAt: new Date(),
+              }
+              addNote(note)
+              revalidatePath('/')
+            } catch (err) {
+              console.log(err)
+            }
             ref.current?.reset()
           }}
         >
-          <Label htmlFor='title' className=' text-xl'>Note Title</Label>
+          <Label
+            htmlFor='title'
+            className=' text-xl'
+          >
+            Note Title
+          </Label>
           <Input
             type='text'
             placeholder='Title...'
@@ -40,13 +67,23 @@ const FormNote = () => {
             required
           />
 
-          <Label htmlFor='content' className=' text-xl'>Note Content</Label>
+          <Label
+            htmlFor='content'
+            className=' text-xl'
+          >
+            Note Content
+          </Label>
           <Textarea
             placeholder='Content...'
             name='content'
             required
           />
-          <Label htmlFor='category' className=' text-xl'>Categories</Label>
+          <Label
+            htmlFor='category'
+            className=' text-xl'
+          >
+            Categories
+          </Label>
           <Select name='category'>
             <SelectTrigger className='w-full'>
               <SelectValue placeholder='Categories' />
