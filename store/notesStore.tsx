@@ -6,7 +6,7 @@ export type Note = {
   title: string
   content: string
   category: string
-  createdAt: Date
+  createdAt: Date | string
 }
 
 type NoteState = {

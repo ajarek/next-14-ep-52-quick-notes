@@ -24,17 +24,18 @@ const options: any = {
   day: 'numeric',
 }
 import { newNoteStore, useFilterButtons } from '@/store/notesStore'
+import type { Note } from '@/store/notesStore'
 
-const ListCard = () => {
+const ListCard = ({notes}:{notes:Note[]}) => {
 
-  const { notes } = newNoteStore()
+  
   const { btnFilter } = useFilterButtons()
   
-  console.log(btnFilter);
+  
   
   return (
-    <div className='w-full grid grid-cols-3 gap-4 max-h-96 overflow-y-auto scrollbar'>
-      {notes
+    <div className='w-full grid grid-cols-3 gap-4 '>
+      {notes && notes
       .filter((item) => item.category == btnFilter || btnFilter == 'All')
       .map((item, index) => (
         <Card

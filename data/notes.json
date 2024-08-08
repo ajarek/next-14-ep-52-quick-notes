@@ -1,67 +1,67 @@
 [
   
   {
-    "id": "1",
-    "title": "Bolognese",
-    "content": "Pasta Bolognese is a classic Italian dish where al dente pasta meets a hearty ground beef sauce slow-cooked with onions and garlic, and tomatoes.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "id": 1,
+    "title": "Holidays in Kołobrzeg",
+    "content": "Get ready for a wonderful getaway. Famous for its laid-back lifestyle and mineral springs, there's plenty to keep you on the go in this lively city. Want to venture out and explore? Kolobrzeg Park, Kołobrzeg Lighthouse and Polish Army Museum are three of the leading places to visit during a trip to Kołobrzeg. Don't put off your visit to this city any longer. ",
+    "category": "Travel",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "2",
-    "title": "Lasagna",
-    "content": "Lasagna is a classic Italian dish with layers of pasta, sauce, and cheese.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "id": 2,
+    "title": "Vacation in the mountains",
+    "content": "Vacationers are often drawn to higher places for a summer retreat. In the mountains, the air is pure and the temperatures are pleasant at this time of year. The atmosphere is truly exceptional. Green meadows and alpine plants. Animals on alpine pastures and in the meadows. Vantage points and peaks that make the region distinctive. Hiking and biking trails, via ferratas, high ropes courses and rivers for rafting – summer in the mountains provides plenty of opportunities for active vacationers",
+    "category": "Vacation",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "3",
-    "title": "Ribs",
-    "content": "Ribs are a classic American dish with meat, protein, and vegetables.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "id": 3,
+    "title": "Adventure in Africa",
+    "content": "Begin in Namibia with a group Explorations Adventurer level safari. This offers good value for travelers looking for stunning landscapes, the atmosphere of the desert and wildlife viewing. Continue to Victoria Falls for an overnight. End your adventure with a Botswana flying safari where you visit 2 areas and enjoy a variety of game viewing activities.",
+    "category": "Adventure",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "4",
+    "id": 4,
     "title": "Hamburger",
     "content": "Hamburger is a classic American dish with meat, protein, and vegetables.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "category": "Cooking",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "5",
+    "id": 5,
     "title": "Pancakes",
     "content": "Pancakes are a classic American dish with protein, protein, and vegetables.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "category": "Recipe",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "6",
+    "id": 6,
     "title": "Pizza",
     "content": "Pizza is a classic American dish with protein, protein, and vegetables.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "category": "Recipe",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "7",
+    "id": 7,
     "title": "Sushi",
     "content": "Sushi is a classic Japanese dish with protein, protein, and vegetables.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "category": "Recipe",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "8",
+    "id": 8,
     "title": "Steak",
     "content": "Steak is a classic American dish with protein, protein, and vegetables.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "category": "Recipe",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   },
   {
-    "id": "9",
+    "id": 9,
     "title": "Tacos",
     "content": "Tacos are a classic Mexican dish with protein, protein, and vegetables.",
-    "category": ["Recipe","Cooking"],
-    "createdAt": "2024-01-01T00:00:00.000Z"
+    "category": "Recipe",
+    "createdAt": "2024-08-01T00:00:00.000Z"
   }
 
 
