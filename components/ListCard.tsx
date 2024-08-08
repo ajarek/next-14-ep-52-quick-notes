@@ -25,6 +25,7 @@ const options: any = {
 }
 import { newNoteStore, useFilterButtons } from '@/store/notesStore'
 import type { Note } from '@/store/notesStore'
+import Link from 'next/link'
 
 const ListCard = ({notes}:{notes:Note[]}) => {
 
@@ -42,6 +43,7 @@ const ListCard = ({notes}:{notes:Note[]}) => {
           key={index}
           className=''
         >
+          
           <CardHeader>
             <CardDescription className='flex justify-between'>
               <span>
@@ -68,8 +70,10 @@ const ListCard = ({notes}:{notes:Note[]}) => {
                 </PopoverContent>
               </Popover>
             </CardDescription>
+           
             <CardTitle>{item.title}</CardTitle>
           </CardHeader>
+          <Link href={`/note?id=${item.id}&title=${item.title}&content=${item.content}&category=${item.category}&createdAt=${item.createdAt}`}>
           <CardContent>
             <p>{item.content.slice(0, 80)}...</p>
           </CardContent>
@@ -81,6 +85,7 @@ const ListCard = ({notes}:{notes:Note[]}) => {
               {item.category}
             </Button>
           </CardFooter>
+          </Link>
         </Card>
       ))}
     </div>

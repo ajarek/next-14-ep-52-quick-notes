@@ -73,11 +73,18 @@
   .btn-filter{
     @apply text-primary text-lg  focus:bg-primary focus:text-white;
   }
+  .h1{
+    @apply text-xl font-semibold;
+  }
+  .span{
+    @apply text-gray-400;
+  }
 }
 .scrollbar {
   scrollbar-width: thin;
   scrollbar-color:  hsl(24.6 95% 53.1%) hsl(60 4.8% 95.9%);
 }
+
 
 
 
