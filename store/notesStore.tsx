@@ -13,7 +13,7 @@ type NoteState = {
   notes: Note[]
   addNote: (note: Note) => void
   removeNote: (id: number) => void
-  
+  updateNote: (id: number, newNote: Note) => void
 }
 
 export const newNoteStore =  create<NoteState>()(
@@ -28,6 +28,13 @@ export const newNoteStore =  create<NoteState>()(
         set((state) => ({
           notes: state.notes.filter((note) => note.id != id),
         })),
+
+       updateNote: (id, newNote): void =>
+          set((state) => ({ 
+            notes: [...state.notes.filter((note) => note.id != id)] 
+            .concat({ ...newNote, id: id })
+
+          })),
 
        
     }),

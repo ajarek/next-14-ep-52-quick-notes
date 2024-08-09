@@ -26,68 +26,78 @@ const options: any = {
 import { newNoteStore, useFilterButtons } from '@/store/notesStore'
 import type { Note } from '@/store/notesStore'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
-const ListCard = ({notes}:{notes:Note[]}) => {
-
-  
+const ListCard = ({
+  notes,
+  isPopover,
+}: {
+  notes: Note[]
+  isPopover: boolean
+}) => {
   const { btnFilter } = useFilterButtons()
-  
-  
-  
+  const { removeNote } = newNoteStore()
+  const router = useRouter()
   return (
     <div className='w-full grid grid-cols-3 gap-4 '>
-      {notes && notes
-      .filter((item) => item.category == btnFilter || btnFilter == 'All')
-      .map((item, index) => (
-        <Card
-          key={index}
-          className=''
-        >
-          
-          <CardHeader>
-            <CardDescription className='flex justify-between'>
-              <span>
-                {new Date(item.createdAt).toLocaleString('en-US', options)}
-              </span>
-              <Popover>
-                <PopoverTrigger>
-                  <Ellipsis />
-                </PopoverTrigger>
-                <PopoverContent className='flex justify-center  gap-2 w-36'>
-                  <Button
-                    size={'icon'}
-                    variant={'outline'}
-                  >
-                    <FilePenLine />
-                  </Button>
-                  <Button
-                    size={'icon'}
-                    variant={'outline'}
-                    className='hover:bg-red-500'
-                  >
-                    <Trash2 />
-                  </Button>
-                </PopoverContent>
-              </Popover>
-            </CardDescription>
-           
-            <CardTitle>{item.title}</CardTitle>
-          </CardHeader>
-          <Link href={`/note?id=${item.id}&title=${item.title}&content=${item.content}&category=${item.category}&createdAt=${item.createdAt}`}>
-          <CardContent>
-            <p>{item.content.slice(0, 80)}...</p>
-          </CardContent>
-          <CardFooter className='flex gap-2'>
-            <Button
+      {notes &&
+        notes
+          .filter((item) => item.category == btnFilter || btnFilter == 'All')
+          .map((item, index) => (
+            <Card
               key={index}
-              className='hover:bg-primary cursor-default'
+              className=''
             >
-              {item.category}
-            </Button>
-          </CardFooter>
-          </Link>
-        </Card>
-      ))}
+              <CardHeader>
+                <CardDescription className='flex justify-between'>
+                  <span>
+                    {new Date(item.createdAt).toLocaleString('en-US', options)}
+                  </span>
+                  {isPopover && (
+                    <Popover>
+                      <PopoverTrigger>
+                        <Ellipsis />
+                      </PopoverTrigger>
+                      <PopoverContent className='flex justify-center  gap-2 w-36'>
+                        <Button
+                          size={'icon'}
+                          variant={'outline'}
+                          onClick={()=>router.push(`/edit-note?id=${item.id}&title=${item.title}&content=${item.content}&category=${item.category}&createdAt=${item.createdAt}`)}
+                        >
+                          <FilePenLine />
+                        </Button>
+                        <Button
+                          size={'icon'}
+                          variant={'outline'}
+                          className='hover:bg-red-500'
+                          onClick={() => removeNote(item.id)}
+                        >
+                          <Trash2 />
+                        </Button>
+                      </PopoverContent>
+                    </Popover>
+                  )}
+                </CardDescription>
+
+                <CardTitle>{item.title}</CardTitle>
+              </CardHeader>
+              <Link
+                href={`/note?id=${item.id}&title=${item.title}&content=${item.content}&category=${item.category}&createdAt=${item.createdAt}`}
+              >
+                <CardContent>
+                  <p>{item.content.slice(0, 80)}...</p>
+                </CardContent>
+                <CardFooter className='flex gap-2'>
+                  <Button
+                    key={index}
+                    className='hover:bg-primary cursor-default'
+                  >
+                    {item.category}
+                  </Button>
+                </CardFooter>
+              </Link>
+            </Card>
+          ))}
     </div>
   )
 }

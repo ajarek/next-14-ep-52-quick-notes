@@ -14,8 +14,8 @@ export default function Home() {
      <FilterButtons/>
      <div className='w-full flex flex-col  max-h-96 overflow-y-auto scrollbar gap-4'>
 
-         <ListCard notes={notes}/>
-         <ListCard notes={data}/>
+         <ListCard notes={notes} isPopover={true}/>
+         <ListCard notes={data} isPopover={false}/>
 
 
      </div>
