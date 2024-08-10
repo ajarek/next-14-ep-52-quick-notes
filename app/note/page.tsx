@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Note = ({
   searchParams,
 }: {
@@ -12,7 +10,7 @@ const Note = ({
   }
 }) => {
   return (
-    <div className='w-3/4  min-h-[calc(100vh-96px)] mx-auto grid grid-cols-2 max-lg:grid-cols-1 place-items-center bg-background px-24'>
+    <div className='max-lg:w-full w-3/4  min-h-[calc(100vh-96px)] mx-auto grid grid-cols-2 max-lg:grid-cols-1 place-items-center bg-background px-24 max-lg:px-4'>
       <div>
         <span className='span'>Title:</span>
         <h1 className='h1'>{searchParams.title}</h1>
@@ -21,10 +19,10 @@ const Note = ({
         <span className='span'>Id:</span>
         <h1 className='h1'>{searchParams.id}</h1>
         <span className='span'>Created :</span>
-        <h1 className='h1'>{(searchParams.createdAt).slice(0, 10)}</h1>
+        <h1 className='h1'>{searchParams.createdAt.slice(0, 10)}</h1>
       </div>
       <div>
-      <span className='span'>Content:</span>
+        <span className='span'>Content:</span>
         <p className='tracking-wide'>{searchParams.content}</p>
       </div>
     </div>

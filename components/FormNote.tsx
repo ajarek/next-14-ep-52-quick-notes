@@ -15,13 +15,15 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import Link from 'next/link'
-
+import { useRouter } from 'next/navigation'
 const FormNote = () => {
   const ref = useRef<HTMLFormElement>(null)
   const { addNote } = newNoteStore()
+  const router = useRouter()
+
   return (
     <div className='  w-full  gap-8 items-center justify-center p-4 '>
-      <div className=' flex flex-col  gap-4'>
+      <div className='w-full flex flex-col  gap-4'>
         <div className='flex justify-between items-center'>
           <h1 className='text-2xl font-bold'>Add a note</h1>
           <Link href='/'>❌</Link>
@@ -33,7 +35,7 @@ const FormNote = () => {
           onSubmit={(e) => {
             e.preventDefault()
             const formData = new FormData(e.target as HTMLFormElement)
-            
+
             try {
               const title = formData.get('title')?.toString()
               const content = formData.get('content')?.toString()
@@ -50,6 +52,8 @@ const FormNote = () => {
               revalidatePath('/')
             } catch (err) {
               console.log(err)
+            } finally {
+              router.push('/')
             }
             ref.current?.reset()
           }}

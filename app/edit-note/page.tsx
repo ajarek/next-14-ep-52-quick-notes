@@ -2,11 +2,10 @@
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import type { Note } from '@/store/notesStore'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { revalidatePath } from 'next/cache'
 import { newNoteStore } from '@/store/notesStore'
 import {
   Select,
@@ -16,6 +15,8 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+
 const EditNote = ({
   searchParams,
 }: {
@@ -31,7 +32,11 @@ const EditNote = ({
   const { updateNote } = newNoteStore()
   const router = useRouter()
   return (
-    <div className='w-3/4  min-h-[calc(100vh-96px)] mx-auto flex flex-col items-center justify-start bg-background px-24'>
+    <div className='max-lg:w-full w-3/4  min-h-[calc(100vh-96px)] mx-auto flex flex-col items-center justify-start bg-background px-24 max-lg:px-4'>
+      <div className='w-full flex justify-between items-center mt-2'>
+        <h1 className='text-2xl font-bold'>Update a note</h1>
+        <Link href='/'>❌</Link>
+      </div>
       <form
         ref={ref}
         className='w-full  flex flex-col gap-4 p-6 '

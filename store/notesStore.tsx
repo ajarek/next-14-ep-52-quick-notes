@@ -16,37 +16,36 @@ type NoteState = {
   updateNote: (id: number, newNote: Note) => void
 }
 
-export const newNoteStore =  create<NoteState>()(
+export const newNoteStore = create<NoteState>()(
   persist(
     (set, get) => ({
       notes: [],
 
       addNote: (note: Note) =>
         set((state) => ({ notes: [note, ...state.notes] })),
-      
+
       removeNote: (id) =>
         set((state) => ({
           notes: state.notes.filter((note) => note.id != id),
         })),
 
-       updateNote: (id, newNote): void =>
-          set((state) => ({ 
-            notes: [...state.notes.filter((note) => note.id != id)] 
-            .concat({ ...newNote, id: id })
-
-          })),
-
-       
+      updateNote: (id, newNote): void =>
+        set((state) => ({
+          notes: [...state.notes.filter((note) => note.id != id)].concat({
+            ...newNote,
+            id: id,
+          }),
+        })),
     }),
     { name: 'notesStore', storage: createJSONStorage(() => localStorage) }
   )
 )
-type ButtonState={
-  btnFilter:string
-  updateButton:(newButton:string)=>void
+type ButtonState = {
+  btnFilter: string
+  updateButton: (newButton: string) => void
 }
 export const useFilterButtons = create<ButtonState>((set) => ({
-  btnFilter: 'All' ,
-  
-  updateButton: (newButton:string) => set({ btnFilter: newButton }),
+  btnFilter: 'All',
+
+  updateButton: (newButton: string) => set({ btnFilter: newButton }),
 }))

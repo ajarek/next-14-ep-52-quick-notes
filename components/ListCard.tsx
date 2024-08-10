@@ -39,7 +39,7 @@ const ListCard = ({
   const { removeNote } = newNoteStore()
   const router = useRouter()
   return (
-    <div className='w-full grid grid-cols-3 gap-4 '>
+    <div className='w-full grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4 '>
       {notes &&
         notes
           .filter((item) => item.category == btnFilter || btnFilter == 'All')
@@ -62,7 +62,11 @@ const ListCard = ({
                         <Button
                           size={'icon'}
                           variant={'outline'}
-                          onClick={()=>router.push(`/edit-note?id=${item.id}&title=${item.title}&content=${item.content}&category=${item.category}&createdAt=${item.createdAt}`)}
+                          onClick={() =>
+                            router.push(
+                              `/edit-note?id=${item.id}&title=${item.title}&content=${item.content}&category=${item.category}&createdAt=${item.createdAt}`
+                            )
+                          }
                         >
                           <FilePenLine />
                         </Button>
